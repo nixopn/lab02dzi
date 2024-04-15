@@ -224,14 +224,6 @@ To https://github.com/nixopn/lab02dzi.git
 
 4. Проверьте, что ветка patch1 доступна в удалёный репозитории.
 
-`````sh
-
-`````
-
-`````sh
-
-`````
-
 5. Создайте pull-request patch1 -> master.
 
 `````sh
@@ -341,5 +333,116 @@ git branch -d patch1
 `````
 
 `````sh
-
+Deleted branch patch1 (was 91f3162).
 `````
+
+**Chyast 3**
+
+1. Создайте новую локальную ветку patch2.
+
+`````sh
+git checkout -b patch2
+`````
+
+`````sh
+Switched to a new branch 'patch2'
+`````
+
+2. Измените code style с помощью утилиты clang-format. Например, используя опцию -style=Mozilla.
+
+`````sh
+clang-format -style=Mozilla -i hello_world.cpp
+`````
+
+3. commit, push, создайте pull-request patch2 -> master.
+
+`````sh
+git add hello_world.cpp
+git commit -m "Clang-formatishe"
+git push origin patch2
+`````
+
+`````sh
+[patch2 b90d032] Clang-formatishe
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+ 
+ Username for 'https://github.com': nixopn
+Password for 'https://nixopn@github.com':
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 1.33 KiB | 1.33 MiB/s, done.
+Total 6 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote:
+remote: Create a pull request for 'patch2' on GitHub by visiting:
+remote:      https://github.com/nixopn/lab02dzi/pull/new/patch2
+remote:
+To https://github.com/nixopn/lab02dzi.git
+ * [new branch]      patch2 -> patch2
+`````
+
+4. В ветке master в удаленном репозитории измените комментарии, например, расставьте знаки препинания, переведите комментарии на другой язык.
+
+
+5. Убедитесь, что в pull-request появились конфликтны.
+
+
+6. Для этого локально выполните pull + rebase (точную последовательность команд, следует узнать самостоятельно). Исправьте конфликты.
+
+`````sh
+git pull origin main
+git checkout patch2
+git add .
+git rebase main
+git add .
+git rebase --continue
+`````
+
+`````sh
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 971 bytes | 161.00 KiB/s, done.
+From https://github.com/nixopn/lab02dzi
+   b90d032..3ea5397  patch2     -> origin/patch2
+
+Switched to branch 'patch2'
+
+Слияние hello_world.cpp
+КОНФЛИКТ (содержимое): Конфликт слияния в hello_world.cpp
+error: не удалось применить коммит ebad822... Updated code style using clang-format
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+
+1 file changed, 2 deletions(-)
+`````
+
+7. Сделайте force push в ветку patch2
+
+`````sh
+git push origin patch2 --force
+`````
+
+`````sh
+Username for 'https://github.com': nixopn
+Password for 'https://тшnixopn@github.com':
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 1.34 KiB | 1.34 MiB/s, done.
+Total 6 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/nixopn/lab02dzi.git
+ + 3ea5397...235cdfb patch2 -> patch2 (forced update)
+`````
+
+8. Убедитель, что в pull-request пропали конфликтны.
+
+
+9. Вмержите pull-request patch2 -> master.
