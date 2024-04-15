@@ -4,7 +4,7 @@
 int
 main()
 {
-  // vvedi imya
+  // vvedi imya аааа
   std::string name;
   std::cout << "Enter your name: ";
   std::cin >> name;
