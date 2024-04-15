@@ -257,57 +257,87 @@ return 0;
 7. commit, push.
 
 `````sh
+git commit -a -m "Dobavil commentarii"
 
+git push origin patch1
 `````
 
 `````sh
-
+[patch1 85fbedf] Dobavil commentarii
+ 2 files changed, 198 insertions(+), 5 deletions(-)
+ 
+ Username for 'https://github.com': nixopn
+Password for 'https://ттnixopn@github.com':
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 3.13 KiB | 3.13 MiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/nixopn/lab02dzi.git
+   bffb455..85fbedf  patch1 -> pat
 `````
 
 8. Проверьте, что новые изменения есть в созданном на шаге 5 pull-request
 
 `````sh
-
-`````
-
-`````sh
-
+Проверяем в репозитории через графический интерфейс.
 `````
 
 9. В удалённый репозитории выполните слияние PR patch1 -> master и удалите ветку patch1 в удаленном репозитории.
 
-`````sh
-
-`````
-
-`````sh
-
-`````
 
 10. Локально выполните pull.
 
 `````sh
-
+git pull origin master
 `````
 
 `````sh
-
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (1/1), 904 bytes | 47.00 KiB/s, done.
+From https://github.com/nixopn/lab02dzi
+ * branch            master     -> FETCH_HEAD
+   a645b22..23c0468  master     -> origin/master
+Updating 85fbedf..23c0468
+Fast-forward
 `````
 
 11. С помощью команды git log просмотрите историю в локальной версии ветки master.
 
 `````sh
-
+git log
 `````
 
 `````sh
+Author: nixopn <eisnersandy2@gmail.com>
+Date:   Mon Apr 15 15:04:18 2024 +0300
 
+    Dobavil commentarii
+
+commit bffb455668cba59c3175c13db1f9962551ff6734
+Author: nixopn <eisnersandy2@gmail.com>
+Date:   Sun Apr 14 22:54:12 2024 +0300
+
+    Removed using namespace std;
+
+commit a645b22476d536a360f6eb7a032bbf698ce807f5 (master)
+Author: nixopn <eisnersandy2@gmail.com>
+Date:   Sun Apr 14 21:40:40 2024 +0300
+
+    Your commit message
+
+commit 0a13a5dbb15bb4a493dcf401e71488f74f2906fc (main)
+Author: nixopn <eisnersandy2@gmail.com>
 `````
 
 12. Удалите локальную ветку patch1.
 
 `````sh
-
+git branch -d patch1
 `````
 
 `````sh

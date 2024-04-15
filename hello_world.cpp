@@ -1,5 +1,6 @@
 #include <iostream>
-#include <string>//biblioteki
+#include <string> //biblioteki
+
 
 int main() {
 //vvedi imya аааа
